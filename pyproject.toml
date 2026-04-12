@@ -1,0 +1,60 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lrts"
+version = "0.1.0"
+description = "LLM Regression Testing System — CI/CD for LLM behavior"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+keywords = ["llm", "testing", "regression", "prompt", "ci", "cd"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Software Development :: Quality Assurance",
+    "Typing :: Typed",
+]
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
+    "typer>=0.15",
+    "rich>=13.9",
+    "sqlmodel>=0.0.22",
+    "aiosqlite>=0.21",
+    "openai>=1.60",
+    "anthropic>=0.43",
+    "numpy>=2.0",
+    "httpx>=0.28",
+    "python-dotenv>=1.1",
+    "python-multipart>=0.0.20",
+    "greenlet>=3.1",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+]
+
+[project.urls]
+Homepage = "https://github.com/rufus-SD/lrts"
+Repository = "https://github.com/rufus-SD/lrts"
+Issues = "https://github.com/rufus-SD/lrts/issues"
+
+[project.scripts]
+lrts = "lrts.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["lrts"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,21 @@
+# LRTS example — test with Ollama (local, no API key needed)
+# Usage: cd examples/ollama && lrts test
+
+provider: ollama
+model: gpt-oss:20b
+threshold: 0.85
+
+prompts:
+  support-bot:
+    v1: prompts/v1.txt
+    v2: prompts/v2.txt
+
+datasets:
+  qa: datasets/qa.jsonl
+
+tests:
+  - prompt: support-bot
+    version: 2
+    baseline: 1
+    dataset: qa
+    evaluators: [exact, keyword, structure, judge]
